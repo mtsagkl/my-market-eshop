@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
+import { FaCreditCard,FaApplePay, FaGooglePay } from 'react-icons/fa';
 // Αρχικά προϊόντα (Seed Data με παραδείγματα προσφορών)
 const initialProducts = [
   {
@@ -1478,6 +1478,55 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* FOOTER SECTION */}
+            <footer className="site-footer">
+              <div className="footer-content">
+                <div className="footer-column">
+                  <h3>🛒 My Market</h3>
+                  <p>Φέρνουμε τα πιο φρέσκα προϊόντα και τις καλύτερες προσφορές κατευθείαν στην πόρτα σας με ασφάλεια και ταχύτητα.</p>
+                </div>
+
+                <div className="footer-column">
+                  <h4>Γρήγοροι Σύνδεσμοι</h4>
+                  <ul>
+                    <li><a href="#hero" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Αρχική Σελίδα</a></li>
+                    <li><a href="#categories" onClick={() => setIsFilterOpen(true)}>Κατηγορίες Προϊόντων</a></li>
+                    <li><a href="#offers" onClick={() => { setSelectedCategory("Προσφορές"); window.scrollTo({ top: 400, behavior: 'smooth' }); }}>Προσφορές</a></li>
+                  </ul>
+                </div>
+
+                <div className="footer-column">
+                  <h4>Εξυπηρέτηση Πελατών</h4>
+                  <ul>
+                    <li>📞 Τηλέφωνο: 210 1234567</li>
+                    <li>✉️ Email: support@mymarket.gr</li>
+                    <li>⏰ Ωράριο: Δευ - Σαβ: 08:00 - 21:00</li>
+                    <li>📍 Διεύθυνση: Θεσσαλονίκη, Ελλάδα</li>
+                  </ul>
+                </div>
+
+                <div className="footer-column">
+                  <h4>Τρόποι Πληρωμής</h4>
+                  <div className="payment-methods">
+                    <span title="Πιστωτική / Χρεωστική Κάρτα">
+                      <FaCreditCard />
+                    </span>
+                    <span title="Apple Pay">
+                      <FaApplePay />
+                    </span>
+                    <span title="Google Pay">
+                      <FaGooglePay />
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="footer-bottom">
+                <p>&copy; {new Date().getFullYear()} My Market E-Shop</p>
+              </div>
+            </footer>
+
     </div>
   );
 }

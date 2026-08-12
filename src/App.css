@@ -179,6 +179,102 @@ body, html {
   color: black;
 }
 
+/* ================= FOOTER STYLES ================= */
+.site-footer {
+  background-color: #800020;
+  color: #e2e8f0;
+  padding: 40px 20px 20px 20px;
+  margin-top: 50px;
+  border-top: 10px solid #daafaf;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #dfe1e5;
+}
+
+.footer-column h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.footer-column h4 {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cbd5e0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #cbd5e0;
+}
+
+.footer-column ul li a {
+  color: #cbd5e0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #63b3ed;
+  text-decoration: underline;
+}
+
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.payment-methods span {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 30px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+}
+
+.payment-methods span:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+
+}
 
 /* ==========================================
    PRODUCT GRID & CARDS
