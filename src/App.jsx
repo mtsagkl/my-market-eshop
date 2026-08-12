@@ -14,7 +14,7 @@ const initialProducts = [
     price: 1.2,
     discount: 20, // 20% έκπτωση
     stock: 200,
-    image: "/images/oranges.jpg"
+    image: "images/oranges.jpg"
   },
   {
     id: "2",
@@ -27,7 +27,7 @@ const initialProducts = [
     price: 1.0,
     discount: 0,
     stock: 150,
-    image: "/images/karota.jpg"
+    image: "images/karota.jpg"
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const initialProducts = [
     price: 12.0,
     discount: 15, // 15% έκπτωση
     stock: 50,
-    image: "/images/fileto_solomo.jpg"
+    image: "images/fileto_solomo.jpg"
   },
   {
     id: "4",
@@ -53,7 +53,7 @@ const initialProducts = [
     price: 6.5,
     discount: 0,
     stock: 100,
-    image: "/images/kimas_mosxarisios.jpg"
+    image: "images/kimas_mosxarisios.jpg"
   },
   {
     id: "5",
@@ -66,7 +66,7 @@ const initialProducts = [
     price: 4.0,
     discount: 10,
     stock: 80,
-    image: "/images/pitsa_margarita.jpg"
+    image: "images/pitsa_margarita.jpg"
   },
   {
     id: "6",
@@ -79,7 +79,7 @@ const initialProducts = [
     price: 3.8,
     discount: 0,
     stock: 60,
-    image: "/images/spaggeti_bolonez.jpg"
+    image: "images/spaggeti_bolonez.jpg"
   },
   {
     id: "7",
@@ -92,7 +92,7 @@ const initialProducts = [
     price: 1.8,
     discount: 0,
     stock: 200,
-    image: "/images/giaourti_2%.jpg"
+    image: "images/giaourti_2%.jpg"
   },
   {
     id: "8",
@@ -105,7 +105,7 @@ const initialProducts = [
     price: 1.3,
     discount: 15,
     stock: 250,
-    image: "/images/gala_plhres.jpg"
+    image: "images/gala_plhres.jpg"
   },
   {
     id: "9",
@@ -118,7 +118,7 @@ const initialProducts = [
     price: 2.5,
     discount: 0,
     stock: 100,
-    image: "/images/bouturo.jpg"
+    image: "images/bouturo.jpg"
   },
   {
     id: "10",
@@ -131,7 +131,7 @@ const initialProducts = [
     price: 3.5,
     discount: 0,
     stock: 70,
-    image: "/images/salami.jpg"
+    image: "images/salami.jpg"
   },
   {
     id: "11",
@@ -144,7 +144,7 @@ const initialProducts = [
     price: 3.2,
     discount: 0,
     stock: 90,
-    image: "/images/mpeikon.jpg"
+    image: "images/mpeikon.jpg"
   },
   {
     id: "12",
@@ -157,7 +157,7 @@ const initialProducts = [
     price: 7.0,
     discount: 20,
     stock: 120,
-    image: "/images/krasi_erithro.jpeg"
+    image: "images/krasi_erithro.jpeg"
   },
   {
     id: "13",
@@ -170,7 +170,7 @@ const initialProducts = [
     price: 5.0,
     discount: 0,
     stock: 150,
-    image: "/images/ouzo.jpg"
+    image: "images/ouzo.jpg"
   },
   {
     id: "14",
@@ -183,7 +183,7 @@ const initialProducts = [
     price: 6.5,
     discount: 25,
     stock: 100,
-    image: "/images/tsipouro.jpg"
+    image: "images/tsipouro.jpg"
   },
   {
     id: "15",
@@ -196,7 +196,7 @@ const initialProducts = [
     price: 1.3,
     discount: 0,
     stock: 300,
-    image: "/images/coca_cola.png"
+    image: "images/coca_cola.png"
   },
   {
     id: "16",
@@ -209,7 +209,7 @@ const initialProducts = [
     price: 0.5,
     discount: 10,
     stock: 500,
-    image: "/images/nero.jpg"
+    image: "images/nero.jpg"
   },
   {
     id: "17",
@@ -222,7 +222,7 @@ const initialProducts = [
     price: 1.8,
     discount: 0,
     stock: 200,
-    image: "/images/red_bull.jpg"
+    image: "images/red_bull.jpg"
   },
   {
     id: "18",
@@ -235,7 +235,7 @@ const initialProducts = [
     price: 2.5,
     discount: 0,
     stock: 180,
-    image: "/images/katharistiko_tzamia.jpg"
+    image: "images/katharistiko_tzamia.jpg"
   },
   {
     id: "19",
@@ -248,7 +248,7 @@ const initialProducts = [
     price: 3.0,
     discount: 0,
     stock: 150,
-    image: "/images/katharistiko_kouzina.jpg"
+    image: "images/katharistiko_kouzina.jpg"
   },
   {
     id: "20",
@@ -261,7 +261,7 @@ const initialProducts = [
     price: 6.0,
     discount: 0,
     stock: 120,
-    image: "/images/ygro_plynthriou.jpg"
+    image: "images/ygro_plynthriou.jpg"
   },
   {
     id: "21",
@@ -274,7 +274,7 @@ const initialProducts = [
     price: 3.8,
     discount: 20,
     stock: 100,
-    image: "/images/malaktiko.jpg"
+    image: "images/malaktiko.jpg"
   },
   {
     id: "22",
@@ -287,7 +287,7 @@ const initialProducts = [
     price: 10.0,
     discount: 0,
     stock: 60,
-    image: "/images/rouz.jpg"
+    image: "images/rouz.jpg"
   },
   {
     id: "23",
@@ -300,7 +300,7 @@ const initialProducts = [
     price: 8.0,
     discount: 0,
     stock: 80,
-    image: "/images/losion.jpg"
+    image: "images/losion.jpg"
   },
   {
     id: "24",
@@ -313,7 +313,7 @@ const initialProducts = [
     price: 2.5,
     discount: 0,
     stock: 150,
-    image: "/images/odontobourtsa.jpg"
+    image: "images/odontobourtsa.jpg"
   },
   {
     id: "25",
@@ -326,7 +326,7 @@ const initialProducts = [
     price: 4.5,
     discount: 20,
     stock: 100,
-    image: "/images/listerin.jpg"
+    image: "images/listerin.jpg"
   },
   {
     id: "26",
@@ -339,7 +339,7 @@ const initialProducts = [
     price: 14.0,
     discount: 0,
     stock: 40,
-    image: "/images/panes.jpeg"
+    image: "images/panes.jpeg"
   },
   {
     id: "27",
@@ -352,7 +352,7 @@ const initialProducts = [
     price: 3.0,
     discount: 0,
     stock: 100,
-    image: "/images/mousli.jpeg"
+    image: "images/mousli.jpeg"
   },
   {
     id: "28",
@@ -365,7 +365,7 @@ const initialProducts = [
     price: 2.2,
     discount: 0,
     stock: 120,
-    image: "/images/brvmh.jpg"
+    image: "images/brvmh.jpg"
   },
   {
     id: "29",
@@ -378,7 +378,7 @@ const initialProducts = [
     price: 1.0,
     discount: 25,
     stock: 150,
-    image: "/images/kritharaki.jpg"
+    image: "images/kritharaki.jpg"
   },
   {
     id: "30",
@@ -391,7 +391,7 @@ const initialProducts = [
     price: 1.8,
     discount: 0,
     stock: 130,
-    image: "/images/taliateles.jpg"
+    image: "images/taliateles.jpg"
   },
   {
     id: "31",
@@ -404,7 +404,7 @@ const initialProducts = [
     price: 2.0,
     discount: 0,
     stock: 140,
-    image: "/images/krakers.jpg"
+    image: "images/krakers.jpg"
   },
   {
     id: "32",
@@ -417,7 +417,7 @@ const initialProducts = [
     price: 3.5,
     discount: 0,
     stock: 90,
-    image: "/images/mpares.jpg"
+    image: "images/mpares.jpg"
   },
   {
     id: "33",
@@ -430,7 +430,7 @@ const initialProducts = [
     price: 2.8,
     discount: 15,
     stock: 200,
-    image: "/images/hlielaio.jpg"
+    image: "images/hlielaio.jpg"
   },
   {
     id: "34",
@@ -443,7 +443,7 @@ const initialProducts = [
     price: 3.0,
     discount: 0,
     stock: 149,
-    image: "/images/sogielaio.jpg"
+    image: "images/sogielaio.jpg"
   },
   {
     id: "35",
@@ -456,7 +456,7 @@ const initialProducts = [
     price: 1.8,
     discount: 0,
     stock: 100,
-    image: "/images/fasolia.jpg"
+    image: "images/fasolia.jpg"
   },
   {
     id: "36",
@@ -469,7 +469,7 @@ const initialProducts = [
     price: 2.0,
     discount: 0,
     stock: 80,
-    image: "/images/rodakina.jpg"
+    image: "images/rodakina.jpg"
   },
   {
     id: "37",
@@ -482,7 +482,7 @@ const initialProducts = [
     price: 2.5,
     discount: 10,
     stock: 300,
-    image: "/images/xartopetsetes.jpg"
+    image: "images/xartopetsetes.jpg"
   },
   {
     id: "38",
@@ -495,7 +495,7 @@ const initialProducts = [
     price: 1.5,
     discount: 0,
     stock: 400,
-    image: "/images/xartomanthla.jpg"
+    image: "images/xartomanthla.jpg"
   }
 ];
 
@@ -1143,10 +1143,18 @@ function App() {
                   <div className="category-badge">{product.category}</div>
                   <div className="product-image-container">
                     <img
-                      src={product.image || "/images/default.jpg"}
+                      src={
+                        product.image
+                          ? product.image.startsWith('http') || product.image.startsWith('data:')
+                            ? product.image
+                            : `${import.meta.env.BASE_URL}${product.image.replace(/^\//, '')}`
+                          : `${import.meta.env.BASE_URL}images/default.jpg`
+                      }
                       alt={product.title}
                       className="product-img"
-                      onError={(e) => { e.target.src = "/images/default.jpg"; }}
+                      onError={(e) => {
+                        e.target.src = `${import.meta.env.BASE_URL}images/default.jpg`;
+                      }}
                     />
                   </div>
                   <h3>{product.title}</h3>
