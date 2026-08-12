@@ -822,7 +822,7 @@ function App() {
       discount: safeNumber(newDiscount),
       stock: parseInt(newStock) || 0,
       measure: newMeasure,
-      image: newImage || "/images/default.jpg"
+      image: newImage || "images/default.jpg"
     };
 
     const updatedProducts = [...products, newProduct];
