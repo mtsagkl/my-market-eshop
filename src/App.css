@@ -139,7 +139,6 @@ body, html {
 
 /* HERO BANNER STYLES */
 .hero-banner {
-  background-color: #eeb644;
   display: flex;
   justify-content: flex-start;
   padding: 50px 40px;

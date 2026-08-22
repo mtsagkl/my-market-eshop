@@ -1,16 +1,38 @@
-# React + Vite
+My Market E-Shop Application🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A full-featured, responsive supermarket e-commerce web application built with React. The application features distinct user roles (Customers & Administrators), dynamic product management, a shopping cart, order history, a favorites system, product reviews, and complete data persistence via LocalStorage.
+Live Application
+[https://mtsagkl.github.io/my-market-eshop/](https://mtsagkl.github.io/my-market-eshop/)**
 
-Currently, two official plugins are available:
+## Χαρακτηριστικά (Features)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Δικαιώματα & Σύνδεση Χρηστών (Authentication)
+* **Εγγραφή & Σύνδεση Χρήστη (Customer Login/Register):** Δυνατότητα δημιουργίας λογαριασμού και εισόδου στην εφαρμογή.
+* **Διαχειριστής (Admin Mode):**
+    * Είσοδος με `username: admin...` και `password: admin`.
+    * Πλήρες περιβάλλον διαχείρισης προϊόντων.
 
-## React Compiler
+### Λειτουργίες Πελάτη (Customer Features)
+* **Πλοήγηση & Αναζήτηση:** Αναζήτηση προϊόντων σε πραγματικό χρόνο και φιλτράρισμα ανά κατηγορία ή προσφορές.
+* **Καλάθι Αγορών (Shopping Cart):** Προσθήκη/αφαίρεση προϊόντων, αυτόματος υπολογισμός συνολικού κόστους και ολοκλήρωση παραγγελίας με ενημέρωση αποθέματος.
+* **Αγαπημένα (Favorites):** Αποθήκευση αγαπημένων προϊόντων σε ξεχωριστή λίστα.
+* **Ιστορικό Παραγγελιών (Order History):** Προβολή προγενέστερων αγορών με ημερομηνία και αναλυτικά στοιχεία.
+* **Αξιολογήσεις (Ratings):** Σύστημα βαθμολόγησης προϊόντων με αστέρια (1-5) και υπολογισμός μέσου όρου.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Λειτουργίες Διαχειριστή (Admin Features)
+* **Προσθήκη Νέου Προϊόντος:** Δυνατότητα εισαγωγής τίτλου, περιγραφής, τιμής, έκπτωσης, αποθέματος, κατηγορίας και φωτογραφίας (file upload ή URL).
+* **Επεξεργασία Προϊόντος (Edit):** Dynamic modal για την ενημέρωση στοιχείων υπαρχόντων προϊόντων.
+* **Διαγραφή Προϊόντος (Delete):** Αφαίρεση προϊόντος από το κατάστημα, τα καλάθια και τα αγαπημένα των χρηστών.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Τεχνολογίες (Tech Stack)
+
+* **Frontend Framework:** [React.js](https://react.dev/)
+* **Build Tool:** [Vite](https://vitejs.js.org/)
+* **Deployment:** [GitHub Pages](https://pages.github.com/) (`gh-pages`)
+* **State & Persistence:** React Hooks (`useState`, `useEffect`) & `localStorage`
+* **Styling:** CSS3 (Responsive Design, Flexbox/Grid)
+
+---
+

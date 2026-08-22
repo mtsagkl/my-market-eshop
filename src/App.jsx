@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { FaCreditCard,FaApplePay, FaGooglePay } from 'react-icons/fa';
-// Αρχικά προϊόντα (Seed Data με παραδείγματα προσφορών)
+import { FaCreditCard, FaApplePay, FaGooglePay } from 'react-icons/fa';
+
+// Αρχικά προϊόντα (Seed Data)
 const initialProducts = [
   {
     id: "1",
@@ -12,7 +13,7 @@ const initialProducts = [
     rating: 0,
     votesCount: 0,
     price: 1.2,
-    discount: 20, // 20% έκπτωση
+    discount: 20,
     stock: 200,
     image: "images/oranges.jpg"
   },
@@ -38,7 +39,7 @@ const initialProducts = [
     rating: 0.0,
     votesCount: 0,
     price: 12.0,
-    discount: 15, // 15% έκπτωση
+    discount: 15,
     stock: 50,
     image: "images/fileto_solomo.jpg"
   },
@@ -596,9 +597,9 @@ function App() {
     }
   }, []);
 
-  // 2. ΦΟΡΤΩΣΗ ΔΕΔΟΜΕΝΩΝ ΧΡΗΣΤΗ
+  // 2. ΦΟΡΤΩΣΗ ΔΕΔΟΜΕΝΩΝ ΧΡΗΣΤΗ (ΜΟΝΟ ΓΙΑ ΑΠΛΟΥΣ USERS)
   useEffect(() => {
-    if (user && !user.username.startsWith("admin")) {
+    if (user && user.role !== "admin") {
       try {
         const savedCart = localStorage.getItem(`cart_${user.username}`);
         setCart(savedCart ? JSON.parse(savedCart) : []);
@@ -618,9 +619,9 @@ function App() {
     }
   }, [user]);
 
-  // Αποθήκευση Καλαθιού
+  // Αποθήκευση Καλαθιού (ΜΟΝΟ ΓΙΑ ΑΠΛΟΥΣ USERS)
   useEffect(() => {
-    if (user && !user.username.startsWith("admin")) {
+    if (user && user.role !== "admin") {
       localStorage.setItem(`cart_${user.username}`, JSON.stringify(cart));
     }
   }, [cart, user]);
@@ -633,6 +634,15 @@ function App() {
       return;
     }
 
+    // 1. ΕΙΔΙΚΟΣ ΕΛΕΓΧΟΣ ΜΟΝΟ ΓΙΑ ΤΟΝ ADMINISTRATOR
+    if (username === "admin" && password === "admin") {
+      const adminUser = { username: "admin", firstName: "Admin", role: "admin" };
+      setUser(adminUser);
+      setAuthMessage('');
+      return;
+    }
+
+    // 2. ΕΛΕΓΧΟΣ ΚΑΙ ΣΥΝΔΕΣΗ ΓΙΑ ΑΠΛΟΥΣ ΧΡΗΣΤΕΣ (USERS)
     try {
       const allUsers = JSON.parse(localStorage.getItem('app_users') || '[]');
       const foundUser = allUsers.find(u => u.username === username);
@@ -642,18 +652,12 @@ function App() {
           setUser(foundUser);
           setAuthMessage('');
         } else {
-          setAuthMessage("To username υπάρχει ήδη (Λάθος κωδικός)");
+          setAuthMessage("Λανθασμένος κωδικός πρόσβασης.");
         }
       } else {
-        if (username.startsWith("admin") && password === "admin") {
-          const adminUser = { username, password, firstName: "Admin", lastName: "User", role: "admin" };
-          localStorage.setItem('app_users', JSON.stringify([...allUsers, adminUser]));
-          setUser(adminUser);
-          setAuthMessage('');
-        } else {
-          setIsRegistering(true);
-          setAuthMessage("Το username δεν υπάρχει. Εισάγετε στοιχεία για εγγραφή.");
-        }
+        // Αν δεν υπάρχει ο χρήστης, προτρέπουμε σε εγγραφή
+        setIsRegistering(true);
+        setAuthMessage("Το username δεν υπάρχει. Εισάγετε στοιχεία για εγγραφή.");
       }
     } catch (err) {
       console.error("Login error:", err);
@@ -896,7 +900,7 @@ function App() {
           discount: updatedDiscount,
           stock: parseInt(editStock) || 0,
           measure: editMeasure,
-          image: editImage || "/images/default.jpg"
+          image: editImage || "images/default.jpg"
         };
       }
       return p;
@@ -948,7 +952,6 @@ function App() {
   const filteredProducts = (products || []).filter(p => {
     if (!p || !p.title) return false;
 
-    // Προσθήκη ειδικού φίλτρου για Προσφορές
     let matchesCategory = false;
     if (selectedCategory === "Όλα") {
       matchesCategory = true;
@@ -962,7 +965,8 @@ function App() {
     return matchesCategory && matchesSearch;
   });
 
-  const isAdmin = user && user.username && user.username.startsWith("admin");
+  // ΑΥΣΤΗΡΟΣ ΚΑΘΟΡΙΣΜΟΣ ΑΝ Ο ΧΡΗΣΤΗΣ ΕΙΝΑΙ ADMIN
+  const isAdmin = user && user.role === "admin";
 
   // LOGIN SCREEN
   if (!user) {
@@ -1013,7 +1017,7 @@ function App() {
           </div>
 
           <div className="nav-links">
-            <span className="welcome-text">👋 {user.firstName || user.username}</span>
+            <span className="welcome-text">👋 {user.firstName || user.username} {isAdmin ? "(Administrator)" : ""}</span>
             {!isAdmin && (
               <>
                 <button className="nav-btn" onClick={() => { setIsFavoritesOpen(true); setIsCartOpen(false); setIsHistoryOpen(false); }}>
@@ -1045,7 +1049,7 @@ function App() {
       <div className="main-layout">
         <main className="content">
 
-          {/* ADMIN PANEL FORM */}
+          {/* ADMIN PANEL FORM (ΕΜΦΑΝΙΖΕΤΑΙ ΜΟΝΟ ΣΤΟΝ ADMINISTRATOR) */}
           {isAdmin && (
             <section className="admin-panel-section">
               <h3> + Προσθήκη Νέου Προϊόντος (Admin Management)</h3>
@@ -1178,9 +1182,8 @@ function App() {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                       <div className="stars">
                         {[1, 2, 3, 4, 5].map((star) => {
-                          const userIsAdmin = user && user.username && user.username.startsWith("admin");
                           const hasVoted = productVotes.some(v => v.userId === user?.username);
-                          const isClickable = !userIsAdmin && !hasVoted;
+                          const isClickable = !isAdmin && !hasVoted;
                           const fillPercentage = Math.min(Math.max((averageRating - star + 1) * 100, 0), 100);
 
                           return (
@@ -1231,8 +1234,8 @@ function App() {
           </div>
         </main>
 
-        {/* SIDEBAR: ΚΑΛΑΘΙ (LIVE PRICES WITH DISCOUNT) */}
-        {isCartOpen && (
+        {/* SIDEBAR: ΚΑΛΑΘΙ (ΜΟΝΟ ΓΙΑ USERS) */}
+        {!isAdmin && isCartOpen && (
           <aside className="sidebar-panel">
             <div className="panel-header"><h3>Το Καλάθι μου 🛒</h3><button onClick={() => setIsCartOpen(false)}>×</button></div>
             {cart.length === 0 ? <p className="empty-msg">Το καλάθι είναι άδειο.</p> : (
@@ -1265,8 +1268,8 @@ function App() {
           </aside>
         )}
 
-        {/* SIDEBAR: ΑΓΑΠΗΜΕΝΑ (LIVE PRICES WITH DISCOUNT) */}
-        {isFavoritesOpen && (
+        {/* SIDEBAR: ΑΓΑΠΗΜΕΝΑ (ΜΟΝΟ ΓΙΑ USERS) */}
+        {!isAdmin && isFavoritesOpen && (
           <aside className="sidebar-panel">
             <div className="panel-header">
               <h3>Αγαπημένα </h3>
@@ -1322,7 +1325,7 @@ function App() {
         {isFilterOpen && (
           <aside className="sidebar-panel" style={{ left: 0, right: 'auto', zIndex: 1001 }}>
             <div className="panel-header">
-              <h3>Κατηγορίες 🔍</h3>
+              <h3>Κατηγορίες</h3>
               <button onClick={() => setIsFilterOpen(false)}>×</button>
             </div>
 
@@ -1334,7 +1337,6 @@ function App() {
                 Όλα τα Προϊόντα
               </button>
 
-              {/* Ειδική επιλογή για Προσφορές στο Filter Menu */}
               <button
                 className="category-btn"
                 style={{ backgroundColor: '#ffe6e6', color: '#e50f0f', fontWeight: 'bold' }}
@@ -1359,8 +1361,8 @@ function App() {
           </aside>
         )}
 
-        {/* SIDEBAR: ΙΣΤΟΡΙΚΟ ΠΑΡΑΓΓΕΛΙΩΝ */}
-        {isHistoryOpen && (
+        {/* SIDEBAR: ΙΣΤΟΡΙΚΟ ΠΑΡΑΓΓΕΛΙΩΝ (ΜΟΝΟ ΓΙΑ USERS) */}
+        {!isAdmin && isHistoryOpen && (
           <aside className="sidebar-panel">
             <div className="panel-header"><h3>Ιστορικό Αγορών </h3><button onClick={() => setIsHistoryOpen(false)}>×</button></div>
             {orders.length === 0 ? <p className="empty-msg">Δεν έχετε κάνει αγορές ακόμα.</p> : (
@@ -1383,7 +1385,7 @@ function App() {
       </div>
 
       {/* MODAL ΕΠΕΞΕΡΓΑΣΙΑΣ ΠΡΟΪΟΝΤΟΣ (ADMIN) */}
-      {editingProduct && (
+      {isAdmin && editingProduct && (
         <div className="modal-overlay">
           <div className="modal-card">
             <div className="panel-header">
@@ -1480,52 +1482,52 @@ function App() {
       )}
 
       {/* FOOTER SECTION */}
-            <footer className="site-footer">
-              <div className="footer-content">
-                <div className="footer-column">
-                  <h3>🛒 My Market</h3>
-                  <p>Φέρνουμε τα πιο φρέσκα προϊόντα και τις καλύτερες προσφορές κατευθείαν στην πόρτα σας με ασφάλεια και ταχύτητα.</p>
-                </div>
+      <footer className="site-footer">
+        <div className="footer-content">
+          <div className="footer-column">
+            <h3>🛒 My Market</h3>
+            <p>Φέρνουμε τα πιο φρέσκα προϊόντα και τις καλύτερες προσφορές κατευθείαν στην πόρτα σας με ασφάλεια και ταχύτητα.</p>
+          </div>
 
-                <div className="footer-column">
-                  <h4>Γρήγοροι Σύνδεσμοι</h4>
-                  <ul>
-                    <li><a href="#hero" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Αρχική Σελίδα</a></li>
-                    <li><a href="#categories" onClick={() => setIsFilterOpen(true)}>Κατηγορίες Προϊόντων</a></li>
-                    <li><a href="#offers" onClick={() => { setSelectedCategory("Προσφορές"); window.scrollTo({ top: 400, behavior: 'smooth' }); }}>Προσφορές</a></li>
-                  </ul>
-                </div>
+          <div className="footer-column">
+            <h4>Γρήγοροι Σύνδεσμοι</h4>
+            <ul>
+              <li><a href="#hero" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Αρχική Σελίδα</a></li>
+              <li><a href="#categories" onClick={() => setIsFilterOpen(true)}>Κατηγορίες Προϊόντων</a></li>
+              <li><a href="#offers" onClick={() => { setSelectedCategory("Προσφορές"); window.scrollTo({ top: 400, behavior: 'smooth' }); }}>Προσφορές</a></li>
+            </ul>
+          </div>
 
-                <div className="footer-column">
-                  <h4>Εξυπηρέτηση Πελατών</h4>
-                  <ul>
-                    <li>📞 Τηλέφωνο: 210 1234567</li>
-                    <li>✉️ Email: support@mymarket.gr</li>
-                    <li>⏰ Ωράριο: Δευ - Σαβ: 08:00 - 21:00</li>
-                    <li>📍 Διεύθυνση: Θεσσαλονίκη, Ελλάδα</li>
-                  </ul>
-                </div>
+          <div className="footer-column">
+            <h4>Εξυπηρέτηση Πελατών</h4>
+            <ul>
+              <li>📞 Τηλέφωνο: 210 1234567</li>
+              <li>✉️ Email: support@mymarket.gr</li>
+              <li>⏰ Ωράριο: Δευ - Σαβ: 08:00 - 21:00</li>
+              <li>📍 Διεύθυνση: Θεσσαλονίκη, Ελλάδα</li>
+            </ul>
+          </div>
 
-                <div className="footer-column">
-                  <h4>Τρόποι Πληρωμής</h4>
-                  <div className="payment-methods">
-                    <span title="Πιστωτική / Χρεωστική Κάρτα">
-                      <FaCreditCard />
-                    </span>
-                    <span title="Apple Pay">
-                      <FaApplePay />
-                    </span>
-                    <span title="Google Pay">
-                      <FaGooglePay />
-                    </span>
-                  </div>
-                </div>
-              </div>
+          <div className="footer-column">
+            <h4>Τρόποι Πληρωμής</h4>
+            <div className="payment-methods">
+              <span title="Πιστωτική / Χρεωστική Κάρτα">
+                <FaCreditCard />
+              </span>
+              <span title="Apple Pay">
+                <FaApplePay />
+              </span>
+              <span title="Google Pay">
+                <FaGooglePay />
+              </span>
+            </div>
+          </div>
+        </div>
 
-              <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} My Market E-Shop</p>
-              </div>
-            </footer>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} My Market E-Shop</p>
+        </div>
+      </footer>
 
     </div>
   );
