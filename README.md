@@ -2,12 +2,14 @@
 
 A full-featured, responsive supermarket e-commerce web application built with React. The application features distinct user roles (Customers & Administrators), dynamic product management, a shopping cart, order history, a favorites system, product reviews, and complete data persistence via LocalStorage.
 
-* **Live Application
+Live Application:
 [https://mtsagkl.github.io/my-market-eshop/](https://mtsagkl.github.io/my-market-eshop/)**
+
+---
 
 ### Authentication
 Credential Routing:
-* **Administrator: Exclusive access via username: admin and password: admin.**
+* **Administrator: Exclusive access via (`username: admin`) and (`password: admin`).**
 * **Customer: Any other username is treated as a customer account.**
 Auto-Registration: If an entered username does not exist, the system redirects to a quick profile setup to automatically register a new customer account.
 
@@ -52,12 +54,12 @@ Admin View Isolation:
 
 ### LocalStorage Data Schema
 The application uses the following LocalStorage keys for state persistence:
-* **app_products: Master array containing all store products.**
-* **app_users: Array of registered customer accounts.**
-* **app_orders: Global log of all completed purchases.**
-* **app_favorites: User-indexed wishlist map.**
-* **app_userVotes: Rating records mapping (userId + productId + rating).**
-* **cart_[username]: Dedicated shopping cart instance for each specific customer.**
+* **`app_products`: Master array containing all store products.**
+* **(`app_users`): Array of registered customer accounts.**
+* **(`app_orders`): Global log of all completed purchases.**
+* **(`app_favorites`): User-indexed wishlist map.**
+* **(`app_userVotes`): Rating records mapping (userId + productId + rating).**
+* **(`cart_[username]`): Dedicated shopping cart instance for each specific customer.**
 
 --- 
 
