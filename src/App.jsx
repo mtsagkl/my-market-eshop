@@ -92,7 +92,7 @@ const initialProducts = [
     price: 1.8,
     discount: 0,
     stock: 200,
-    image: "images/giaourti_2%.jpg"
+    image: "images/giaourti_2.jpg"
   },
   {
     id: "8",
